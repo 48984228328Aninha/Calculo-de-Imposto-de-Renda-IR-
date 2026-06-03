@@ -19,19 +19,18 @@ public class Imposto {
 
     public static void main(String[] args) {
         try {
-            Double salarioBruto = Double.parseDouble(JOptionPane.showInputDialog(0, "Digite o salário bruto:"));
-            JOptionPane.showMessageDialog(null, salarioBruto, null, 0);
+            Double salarioBruto = Double
+                    .parseDouble(JOptionPane.showInputDialog("Qual é o seu salário bruto?", ""));
 
         } catch (NumberFormatException e) {
-            System.out.println("Digite um número válido.");
+            JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);
         }
 
         try {
-            int dependentes = Integer.parseInt(JOptionPane.showInputDialog(0, "Quantos dependentes você tem?"));
-            JOptionPane.showMessageDialog(null, dependentes, null, 0);
+            int dependentes = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes você tem?", ""));
 
         } catch (NumberFormatException e) {
-            System.out.println("Digite um número válido.");
+            JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);
         }
 
     }

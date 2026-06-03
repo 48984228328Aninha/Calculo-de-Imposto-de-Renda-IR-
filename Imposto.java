@@ -14,8 +14,19 @@
 // IR final = IR Bruto - Desconto extra
 
 import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Imposto {
+
+    public List<Double> tabelaINSS() {
+        List<Double> tabela = new ArrayList<>();
+        tabela.add(0.075);
+        tabela.add(0.09);
+        tabela.add(0.12);
+        tabela.add(0.14);
+        return tabela;
+    }
 
     public double verificarDependentes(int dependente) {
         double valorMensal = 189.59;
@@ -37,8 +48,15 @@ public class Imposto {
         try {
             boolean temDependentes = JOptionPane.showConfirmDialog(null, "Você tem dependentes?", "Dependentes",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
-            int dependentes = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes você tem?", ""));
-            totalDeducao = calculadora.verificarDependentes(dependentes);
+
+            if (temDependentes == true) {
+                int dependentes = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes você tem?", ""));
+                totalDeducao = calculadora.verificarDependentes(dependentes);
+            }
+
+            else {
+                totalDeducao = 0;
+            }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);

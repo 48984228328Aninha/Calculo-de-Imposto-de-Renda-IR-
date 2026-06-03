@@ -13,23 +13,26 @@
 // Desconto extra = 978,62 - (0,133145 * Salário bruto)
 // IR final = IR Bruto - Desconto extra
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Imposto {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         try {
-            System.out.println("Digite o salário bruto:");
-            Double salarioBruto = scanner.nextDouble();
+            Double salarioBruto = Double.parseDouble(JOptionPane.showInputDialog(0, "Digite o salário bruto:"));
+            JOptionPane.showMessageDialog(null, salarioBruto, null, 0);
 
-            System.out.println("Quantos dependentes você tem?");
-            int dependentes = scanner.nextInt();
-        } catch (java.util.InputMismatchException e) {
+        } catch (NumberFormatException e) {
             System.out.println("Digite um número válido.");
         }
 
-        scanner.close();
+        try {
+            int dependentes = Integer.parseInt(JOptionPane.showInputDialog(0, "Quantos dependentes você tem?"));
+            JOptionPane.showMessageDialog(null, dependentes, null, 0);
+
+        } catch (NumberFormatException e) {
+            System.out.println("Digite um número válido.");
+        }
 
     }
 }

@@ -40,19 +40,19 @@ public class Imposto {
         double ir = 0;
         double totalDeducao = 0;
 
-        try {
+        try {     //O usuario coloca o salario bruto.
             salarioBruto = Double
                     .parseDouble(JOptionPane.showInputDialog("Qual é o seu salário bruto?", ""));
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { //Erro caso o usuario coloque um valor que não seja um número.
             JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);
         }
 
-        try {
+        try {   // O usuario coloca se tem dependentes.
             boolean temDependentes = JOptionPane.showConfirmDialog(null, "Você tem dependentes?", "Dependentes",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
 
-            if (temDependentes == true) {
+            if (temDependentes == true) {   // Se tiver, faz a dedução.
                 int dependentes = Integer.parseInt(JOptionPane.showInputDialog("Quantos dependentes você tem?", ""));
                 totalDeducao = calculadora.verificarDependentes(dependentes);
             }
@@ -61,13 +61,13 @@ public class Imposto {
                 totalDeducao = 0;
             }
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {   //Erro caso o usuario coloque um valor que não seja um número.
             JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);
         }
 
 
 
-        if (salarioBruto <= 1621.00 ) { //colocando cada nivel de salario em sua respectiva faixa
+        if (salarioBruto <= 1621.00 ) {       //colocando cada nivel de salario em sua respectiva faixa
     faixa = 1;
 } else if (salarioBruto <= 2902.84) {
     faixa = 2;
@@ -78,7 +78,7 @@ public class Imposto {
 } else {
     faixa = 5;
 }
-switch (faixa) {
+switch (faixa) {      //Caso Switch para calcular o IR de acordo com a faixa salarial
     case 1:
         ir = (salarioBruto * calculadora.tabelaINSS().get(0)) - 0;
         JOptionPane.showMessageDialog(null, "O Seu Imposto de Renda é: " + ir);

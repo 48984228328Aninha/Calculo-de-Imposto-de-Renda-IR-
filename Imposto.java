@@ -35,10 +35,13 @@ public class Imposto {
 
     public static void main(String[] args) {
         Imposto calculadora = new Imposto();
+        int faixa = 0;
+        double salarioBruto = 0;
+        double ir = 0;
         double totalDeducao = 0;
 
         try {
-            Double salarioLiquido = Double
+            salarioBruto = Double
                     .parseDouble(JOptionPane.showInputDialog("Qual é o seu salário bruto?", ""));
 
         } catch (NumberFormatException e) {
@@ -62,5 +65,38 @@ public class Imposto {
             JOptionPane.showMessageDialog(null, "Digite um número válido.", "Número inválido", 0);
         }
 
+
+
+        if (salarioBruto <= 1621.00 ) { //colocando cada nivel de salario em sua respectiva faixa
+    faixa = 1;
+} else if (salarioBruto <= 2902.84) {
+    faixa = 2;
+} else if (salarioBruto <= 4354.27) {
+    faixa = 3;
+} else if (salarioBruto <= 8475.55) {
+    faixa = 4;
+} else {
+    faixa = 5;
+}
+switch (faixa) {
+    case 1:
+        ir = (salarioBruto * calculadora.tabelaINSS().get(0)) - 0;
+        JOptionPane.showMessageDialog(null, "O Seu Imposto de Renda é: " + ir);
+        break;
+    case 2:
+        ir = (salarioBruto * calculadora.tabelaINSS().get(1)) - 24.32;
+        JOptionPane.showMessageDialog(null, "O Seu Imposto de Renda é: " + ir);
+        break;
+    case 3:
+        ir = (salarioBruto * calculadora.tabelaINSS().get(2)) - 111.40;
+        JOptionPane.showMessageDialog(null, "O Seu Imposto de Renda é: " + ir);
+        break;
+    case 4:
+        ir = (salarioBruto * calculadora.tabelaINSS().get(3)) - 198.48;
+        JOptionPane.showMessageDialog(null, "O Seu Imposto de Renda é: " + ir);
+        break;
+    default:
+        break;
+}
     }
 }

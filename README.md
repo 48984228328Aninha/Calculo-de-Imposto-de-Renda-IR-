@@ -5,9 +5,7 @@
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Licença](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-Uma API simplificada em Java desenvolvida para calcular o Imposto de Renda Retido na Fonte (IRRF), totalmente atualizada com as regras da **Reforma da Renda de 2026**. 
-
-O projeto foi estruturado focando em alta manutenibilidade, eliminando estruturas condicionais complexas (`if/else` aninhados) através do uso elegante da **Java Stream API**.
+Um software simplificado em Java desenvolvida para calcular o Imposto de Renda Retido na Fonte (IRRF), totalmente atualizada com as regras da **Reforma da Renda de 2026**. 
 
 ---
 
@@ -30,18 +28,11 @@ O projeto foi estruturado focando em alta manutenibilidade, eliminando estrutura
 <h1>Estrutura do Cálculo</h1>
 </div>
 
-O sistema opera em 4 etapas bem definidas:
-
-1.  **Dedução da Previdência:** Encontra a base tributável subtraindo o INSS do Salário Bruto.
-2.  **Filtro por Stream:** Transforma a tabela progressiva em um fluxo de dados para encontrar a faixa correspondente instantaneamente:
-    ```java
-    FaixaImposto faixa = tabela.stream()
-        .filter(f -> baseCalculo <= f.getLimiteMaximo())
-        .findFirst()
-        .orElseThrow();
-    ```
-3.  **Aplicação do Redutor 2026:** Aplica a fórmula de transição pós-reforma baseada no salário bruto inicial.
-4.  **Cálculo Efetivo:** Retorna o imposto final devido garantindo a impossibilidade de valores negativos.
+* **Interface Interativa:** Captura de dados simplificada via caixas de diálogo (`Swing/JOptionPane`).
+* **Tratamento de Exceções:** Proteção contra entradas inválidas (letras ou campos vazios) usando blocos `try-catch`.
+* **Dedução de Dependentes:** Opção dinâmica para calcular o abatimento por dependentes (R$ 189,59 por dependente em 2026).
+* **Cálculo Progressivo Duplo:** Processa em sequência as faixas do INSS e, em seguida, as faixas do Imposto de Renda.
+* **Regra do Novo Redutor (2026):** Aplica o desconto extra por fórmula para salários brutos de até R$ 7.350,00, garantindo a isenção prática para quem ganha até R$ 5.000,00.
 
 ---
 
@@ -49,7 +40,6 @@ O sistema opera em 4 etapas bem definidas:
 <h1>Estrutura do Código</h1>
 </div>
 
-* `FaixaImposto.java`: Classe de modelo que encapsula as propriedades de cada faixa da tabela da Receita Federal.
 * `Imposto.java`: Core do sistema, responsável por receber as entradas, orquestrar os cálculos e aplicar as regras vigentes.
 * `Main.java`: Executável para testes e validação de cenários no console.
 

@@ -70,3 +70,15 @@ double irrfDevido = calculadora.calcularImposto(inss, salarioBruto);
 System.out.printf("IRRF Final Devido: R$ %.2f", irrfDevido);
 // Saída esperada para 2026: R$ 385,10
 ```
+
+<div align="center">
+<h1>Tabela IRRF</h1>
+  <img width="897" height="532" alt="image" src="https://github.com/user-attachments/assets/1e9a6c74-059f-40db-bc37-922480e6363a" />
+</div>
+
+<div align="center">
+<h1>Tabela INSS</h1>
+  <img width="910" height="550" alt="image" src="https://github.com/user-attachments/assets/99165c98-108c-4518-b636-b7f99e2505ce" />
+</div>
+
+### Desenvolvido por Luiz e Amanda
